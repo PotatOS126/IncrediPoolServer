@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: incredipool-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: FRONTEND_URL
+        sync: false # 这个值需要在Render控制台手动设置 
