@@ -8,14 +8,18 @@ const app = express();
 const httpServer = createServer(app);
 const ioServer = io(httpServer, {
     cors: {
-        origin: process.env.FRONTEND_URL || "http://localhost:5173",
+        origin: process.env.FRONTEND_URL || "https://potatos126.github.io",
         methods: ["GET", "POST"],
-        credentials: true
+        credentials: true,
+        allowedHeaders: ["my-custom-header"]
     }
 });
 
 // 中间件
-app.use(cors());
+app.use(cors({
+    origin: process.env.FRONTEND_URL || "https://potatos126.github.io",
+    credentials: true
+}));
 app.use(express.json());
 
 // 游戏状态
